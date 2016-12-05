@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   var client = new Client();
  
 // direct way 
-client.get("http://52.169.24.36/v1/scrap/pt/chaves", function (data, response) {
+client.get("http://52.169.24.36/v1/scrap/pt/sporting", function (data, response) {
     res.render('index',data);
 });
 
