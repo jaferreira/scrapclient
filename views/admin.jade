@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    p Administration
+    button(onclick="bulkLeague()") bulkLeague
+    br
+    each team in teams
+        br 
+        button(onclick="scrapTeam('" + team.name + "')") #{team.name}
+
+    //- select#league
+    //-     each league in leagues
+    //-         option(value=league.league) #{league.league}
+    //-  button(onclick="scrapTeam()") scrapLeague
+
+    script.
+        function bulkLeague(){
+            window.location.href = 'bulkLeague';
+        }
+        function scrapTeam(link){
+            window.location.href = '/admin/scrapTeam/' + link;
+            
+        }

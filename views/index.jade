@@ -1,61 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{HomeTeam} vs #{AwayTeam}
-
-  ul
-    each item in GamesBetweenTeams
-        if (item.SameHomeTeam)
-          if(item.HomeScore > item.AwayScore)
-            li#win= item.Competicion + " ( " + item.Season + " ) " + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-          else if(item.HomeScore < item.AwayScore)
-            li#lose= item.Competicion + " ( " + item.Season + " ) " + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-          else
-            li#draw= item.Competicion + " ( " + item.Season + " ) " + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-        else
-          if(item.HomeScore > item.AwayScore)
-            li#lose= item.Competicion + " ( " + item.Season + " ) " + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-          else if(item.HomeScore < item.AwayScore)
-            li#win= item.Competicion + " ( " + item.Season + " ) " + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-          else
-            li#draw= item.Competicion + " ( " + item.Season + " ) " + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-
-  p Last #{HomeTeam} Games
- 
-    each item in HomeScores
-        if (item.SameHomeTeam)
-          if(item.HomeScore > item.AwayScore)
-            li#win= item.Competicion + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-          else if(item.HomeScore < item.AwayScore)
-            li#lose= item.Competicion +  item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-          else
-            li#draw= item.Competicion +  item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-        else
-          if(item.HomeScore > item.AwayScore)
-            li#lose= item.Competicion + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-          else if(item.HomeScore < item.AwayScore)
-            li#win= item.Competicion  + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-          else
-            li#draw= item.Competicion   + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-
-
-
-
-  p Last Away #{AwayTeam} Games
-    each item in AwayScores        
-        if (!item.SameAwayTeam)
-          if(item.HomeScore > item.AwayScore)
-            li#win= item.Competicion + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-          else if(item.HomeScore < item.AwayScore)
-            li#lose= item.Competicion +  item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-          else
-            li#draw= item.Competicion +  item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-        else
-          if(item.HomeScore > item.AwayScore)
-            li#lose= item.Competicion + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-          else if(item.HomeScore < item.AwayScore)
-            li#win= item.Competicion  + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam
-          else
-            li#draw= item.Competicion   + item.HomeTeam + " " + item.HomeScore + " " + item.AwayScore + " " + item.AwayTeam 
-
+  h1 Next Games
+  ul#next-games
+  each team in nextGames         
+        li
+          a(href="/teams/" +  team.nextGame.HomeTeam + "/livestats") #{team.nextGame.HomeTeam} vs #{team.nextGame.AwayTeam}
+        br
+        
