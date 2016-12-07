@@ -11,6 +11,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var admin = require('./routes/admin');
 var teams = require('./routes/teams');
+var matches = require('./routes/matches');
 var app = express();
 
 // view engine setup
@@ -29,6 +30,7 @@ app.use('/bo', index);
 app.use('/users', users);
 app.use('/admin',admin); 
 app.use('/teams',teams);
+app.use('/match-info', matches);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

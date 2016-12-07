@@ -1,5 +1,124 @@
 extends layout
 
 block content
-    p teste
-    p #{team}
+    h1 #{teamInfo.name} vs #{teamInfo.nextGame.AwayTeam}
+    h2 #{teamInfo.nextGame.Competition.name}
+
+    br
+
+    h3 Games Between Teams
+    div
+        table
+            thead
+                tr
+                    th Data
+                    th Competição
+                    th Equipa Casa
+                    th Resultado
+                    th Equipa Fora 
+            tbody
+                each g in teamInfo.nextGame.GamesBetweenTeams
+                    //- TOD: should be inline condition for the class
+                    if g.SameHomeTeam
+                        tr.sameHomeTeamClass
+                            td
+                                p #{g.Date}
+                            td
+                                p (#{g.Competicion} - #{g.Season})
+                            td
+                                p #{g.HomeTeam}
+                            td
+                                a(href='/match-info/' + g.GamePermLink) #{g.HomeScore} - #{g.AwayScore}               
+                            td
+                                p #{g.AwayTeam}
+                    else
+                        tr
+                            td
+                                p #{g.Date}
+                            td
+                                p (#{g.Competicion} - #{g.Season})
+                            td
+                                p #{g.HomeTeam}
+                            td
+                                a(href='/match-info/' + g.GamePermLink) #{g.HomeScore} - #{g.AwayScore}               
+                            td
+                                p #{g.AwayTeam}
+
+    hr
+
+    h3 Home Scores
+    div
+        table
+            thead
+                tr
+                    th Data
+                    th Competição
+                    th Equipa Casa
+                    th Resultado
+                    th Equipa Fora 
+            tbody
+                each g in teamInfo.nextGame.HomeScores
+                    //- TOD: should be inline condition for the class
+                    if g.SameHomeTeam
+                        tr.sameHomeTeamClass
+                            td
+                                p #{g.Date}
+                            td
+                                p (#{g.Competicion} - #{g.Season})
+                            td
+                                p #{g.HomeTeam}
+                            td
+                                a(href='/') #{g.HomeScore} - #{g.AwayScore}               
+                            td
+                                p #{g.AwayTeam}
+                    else
+                        tr
+                            td
+                                p #{g.Date}
+                            td
+                                p (#{g.Competicion} - #{g.Season})
+                            td
+                                p #{g.HomeTeam}
+                            td
+                                a(href='/') #{g.HomeScore} - #{g.AwayScore}               
+                            td
+                                    p #{g.AwayTeam}
+    hr
+
+    h3 Away Scores
+    div
+        table
+            thead
+                tr
+                    th Data
+                    th Competição
+                    th Equipa Casa
+                    th Resultado
+                    th Equipa Fora 
+            tbody
+                each g in teamInfo.nextGame.AwayScores
+                    //- TOD: should be inline condition for the class
+                    if g.SameHomeTeam
+                        tr.sameHomeTeamClass
+                            td
+                                p #{g.Date}
+                            td
+                                p (#{g.Competicion} - #{g.Season})
+                            td
+                                p #{g.HomeTeam}
+                            td
+                                a(href='/') #{g.HomeScore} - #{g.AwayScore}               
+                            td
+                                p #{g.AwayTeam}
+                    else
+                        tr
+                            td
+                                p #{g.Date}
+                            td
+                                p (#{g.Competicion} - #{g.Season})
+                            td
+                                p #{g.HomeTeam}
+                            td
+                                a(href='/') #{g.HomeScore} - #{g.AwayScore}               
+                            td
+                                p #{g.AwayTeam}

@@ -5,6 +5,6 @@ block content
   ul#next-games
   each team in nextGames         
         li
-          a(href="/teams/" +  team.nextGame.HomeTeam + "/livestats") #{team.nextGame.HomeTeam} vs #{team.nextGame.AwayTeam}
+          a(href="/teams/livestats/" +  team.nextGame.HomeTeam ) #{team.nextGame.HomeTeam} vs #{team.nextGame.AwayTeam}
         br
         
