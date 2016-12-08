@@ -2,10 +2,110 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+h1{
+  text-align: center;
+  color: limegreen;
+  margin-bottom: 40px;
+}
+#content{
+  width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.casa{
+  margin-left: 330px;
+  position: absolute;
+  z-index: 9999;
+  margin-top: -7px;
+}
+.fora{
+  position: absolute;
+  z-index: 9999;
+  margin-top: -7px;
+  margin-left: 616px;
+}
+.linha{
+  border-style: solid;
+  border-color: yellowgreen;
+  border-right-style: none;
+  border-bottom-style: none;
+  width: 300px;
+  height: 2000px;
+  position: absolute;
+  z-index: -9999;
+}
+
+.linha2{
+  width: 300px;
+  height: 2000px;
+  float: right;
+  border-style: solid;
+  border-color: red;
+  border-left-style: none;
+  border-bottom-style: none;
+}
+
+#main{
+  width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  position: absolute;
+  z-index: 9998;
+}
+  
+.data{
+  margin-top: 45px;
+  font-size: 14px;
+  color: grey;
+  text-align: center;
+}
+.competicao{
+  font-size: 20px;
+}
+.conf{
+  text-align: center;
+  padding-top: 40px;
+}
+.homeTeam{
+  margin-left: 60px;
+  float: left;
+}
+.awayTeam{
+  float: right;
+  margin-right: 60px;
+}
+.ultimos{
+  width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 10px;
+  background-color: lightseagreen;
+}
+.dist{
+  background-color: red;
+  width: 40px;
+  margin-top: 18px;
+  float: left;
+  position: absolute;
+  z-index: 9998;
+}
+.res{
+  background-color: lawngreen;
+  width: 30px;
+  float: right;
+}
+
 
 a {
   color: #00B7FF;
 }
+li{
+  list-style-type: none;
+}
+
+
+
 
 li#draw{
   color: yellow;

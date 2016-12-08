@@ -1,10 +1,25 @@
 extends layout
 
 block content
-  h1 Next Games
-  ul#next-games
-  each team in nextGames         
-        li
-          a(href="/teams/livestats/" +  team.nextGame.HomeTeam ) #{team.nextGame.HomeTeam} vs #{team.nextGame.AwayTeam}
-        br
-        
+  #content
+    h1 Next Game's
+    p.casa CASA
+    p.fora FORA
+    .linha
+    .linha2
+    #main
+      each team in nextGames         
+          li
+            .data 11 de Dezembro de 2016 – #{team.nextGame.Competition.name}
+            .conf Confronto Directo – Últimos
+            a(href="/teams/" +  team.nextGame.HomeTeam + "/livestats") 
+            .homeTeam #{team.nextGame.HomeTeam} 
+            .awayTeam #{team.nextGame.AwayTeam}
+            .ultimos Gráfico
+              p Grafico
+              p Gráfico
+              p Gráfico
+              .dist
+                  p Fora   Casa   Fora   Casa
+              .res
+                  p 1 - 0 1 - 1 0 - 3 0 - 1
