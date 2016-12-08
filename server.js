@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/bo', index);
 app.use('/users', users);
-app.use('/admin',admin); 
+app.use('/bo/admin',admin); 
 app.use('/teams',teams);
 app.use('/match-info', matches);
 
