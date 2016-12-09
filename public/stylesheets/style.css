@@ -68,32 +68,36 @@ h1{
   padding-top: 40px;
 }
 .homeTeam{
-  margin-left: 60px;
+  margin-left: 98px;
   float: left;
 }
 .awayTeam{
   float: right;
-  margin-right: 60px;
+  margin-right: 98px;
 }
-.ultimos{
-  width: 480px;
+#ultimos{
+  width: 450px;
+  padding-top: 20px;
   margin-left: auto;
   margin-right: auto;
-  font-size: 10px;
-  background-color: lightseagreen;
 }
 .dist{
-  background-color: red;
-  width: 40px;
-  margin-top: 18px;
-  float: left;
-  position: absolute;
-  z-index: 9998;
+  width: 50px;
+  text-align: left;
+  font-size: 10px;
+  display: inline-table;
 }
 .res{
-  background-color: lawngreen;
-  width: 30px;
+  text-align: right;
   float: right;
+  width: 50px;
+  font-size: 10px;
+}
+.imagem{
+  position: absolute;
+    left: 60px;
+    top: 135px;
+    z-index: -1;
 }
 
 

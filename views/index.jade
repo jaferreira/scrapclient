@@ -13,14 +13,20 @@ block content
             .data 11 de Dezembro de 2016 – #{team.nextGame.Competition.name}
             a(href="/teams/livestats/" +  team.nextGame.HomeTeam )
               .conf Confronto Directo – Últimos
-             
-            .homeTeam #{team.nextGame.HomeTeam} 
-            .awayTeam #{team.nextGame.AwayTeam}
-            .ultimos Gráfico
-              p Grafico
-              p Gráfico
-              p Gráfico
+            #ultimos
               .dist
-                  p Fora   Casa   Fora   Casa
+                each game,i in team.nextGame.GamesBetweenTeams
+                  if(i <= 4)                    
+                    if(game.SameHomeTeam)
+                      p Casa
+                    else
+                      p Fora               
               .res
-                  p 1 - 0 1 - 1 0 - 3 0 - 1
+                each game,i in team.nextGame.GamesBetweenTeams
+                  if(i <= 4)                    
+                    p #{game.Result}
+              .imagem        
+                img(src="https://upload.wikimedia.org/wikipedia/pt/f/f0/500px-SL_Benfica_logo_svg.png", width="125px")   
+          .homeTeam #{team.nextGame.HomeTeam} 
+          .awayTeam #{team.nextGame.AwayTeam}
+        
