@@ -11,8 +11,9 @@ block content
       each team in nextGames         
           li
             .data 11 de Dezembro de 2016 – #{team.nextGame.Competition.name}
-            .conf Confronto Directo – Últimos
-            a(href="/teams/" +  team.nextGame.HomeTeam + "/livestats") 
+            a(href="/teams/livestats/" +  team.nextGame.HomeTeam )
+              .conf Confronto Directo – Últimos
+             
             .homeTeam #{team.nextGame.HomeTeam} 
             .awayTeam #{team.nextGame.AwayTeam}
             .ultimos Gráfico

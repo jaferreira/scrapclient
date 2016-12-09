@@ -17,9 +17,9 @@ var getDetailGame = function (db, name, callback) {
     });
 }
 
-var getGameInfo = function (db, callback) {
+var getGameInfo = function (db,teams, callback) {
     var collection = db.collection('games');
-    collection.find().toArray(function (err, items) {
+    collection.find({"name" : teams}).toArray(function (err, items) {
         if (err) {
             console.log('error');
             reject(err);
@@ -36,7 +36,7 @@ router.get('/livestats/:team', function (req, res, next) {
 
     MongoClient.connect(url, function (err, db) {
         assert.equal(null, err);
-        getGameInfo(db, function (data) {
+        getGameInfo(db, team, function (data) {
             viewData = {
                 team: team,
                 teamInfo: data[0]
