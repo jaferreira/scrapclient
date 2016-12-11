@@ -7,6 +7,16 @@ h1{
   color: limegreen;
   margin-bottom: 40px;
 }
+
+.chart02 {
+   float: right;
+  left: 0px;
+  top: 50px;
+  width: 400px;
+  -webkit-perspective: 600;
+  -webkit-perspective-origin: center;
+}
+
 #content{
   width: 980px;
   margin-left: auto;
