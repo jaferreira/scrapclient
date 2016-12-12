@@ -1,32 +1,59 @@
 extends layout
 
 block content
-  #content
-    h1 Next Game's OLA
-    p.casa CASA
-    p.fora FORA
-    .linha
-    .linha2
-    #main
-      each team in nextGames         
-          li
-            .data 11 de Dezembro de 2016 – #{team.nextGame.Competition.name}
-            a(href="/teams/livestats/" +  team.nextGame.HomeTeam )
-              .conf Confronto Directo – Últimos
-            #ultimos
-              .dist
-                each game,i in team.nextGame.GamesBetweenTeams
-                  if(i <= 4)                    
-                    if(game.SameHomeTeam)
-                      p Casa
-                    else
-                      p Fora               
-              .res
-                each game,i in team.nextGame.GamesBetweenTeams
-                  if(i <= 4)                    
-                    p #{game.Result}
-              .imagem        
-                img(src="https://upload.wikimedia.org/wikipedia/pt/f/f0/500px-SL_Benfica_logo_svg.png", width="125px")   
-          .homeTeam #{team.nextGame.HomeTeam} 
-          .awayTeam #{team.nextGame.AwayTeam}
-        
+  .container
+        div.row
+          div.col-md-12
+            p.titulo Next Game's OLA
+        div.row
+          div.col-md-4
+            hr.linha
+          div.col-md-2
+            p.casa CASA
+          div.col-md-2
+            p.fora FORA
+          div.col-md-4
+            hr.linha2      
+          each team in nextGames
+            li
+              a(href="/teams/livestats/" +  team.nextGame.HomeTeam )
+                div.row
+                  div.col-md-12
+                    .data 11 de Dezembro de 2016 – #{team.nextGame.Competition.name}
+                div.row 
+                  div.col-md-12
+                    .conf Confronto Directo – Últimos
+                div.row 
+                  div.col-md-3
+                    .imagem        
+                      img(src="https://upload.wikimedia.org/wikipedia/pt/f/f0/500px-SL_Benfica_logo_svg.png", width="125px") 
+                  div.col-md-6
+                    div.row
+                      div.col-md-4
+                        .dist
+                          each game,i in team.nextGame.GamesBetweenTeams
+                            if(i <= 4)                    
+                              if(game.SameHomeTeam)
+                                p Casa
+                              else
+                                p Fora
+                      div.col-md-4
+                        
+                      div.col-md-4              
+                        .res
+                          each game,i in team.nextGame.GamesBetweenTeams
+                            if(i <= 4)                    
+                              p #{game.Result}
+                  div.col-md-3
+                    .imagem        
+                      img(src="http://desporto_stats.imgs.sapo.pt/9/Teams/1680.png", width="125px")  
+                div.row 
+                  div.col-md-3
+                    .equipa #{team.nextGame.HomeTeam}
+                  div.col-md-6
+                  div.col-md-3
+                    .equipa #{team.nextGame.AwayTeam}
+            br
+            br
+            hr.separar
+            
