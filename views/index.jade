@@ -26,7 +26,7 @@ block content
                 div.row 
                   div.col-md-3
                     .imagem        
-                      img(src="https://upload.wikimedia.org/wikipedia/pt/f/f0/500px-SL_Benfica_logo_svg.png", width="125px") 
+                      img(src="/logos/" + team.nextGame.HomeTeam +".png", width="125px") 
                   div.col-md-6
                     div.row
                       div.col-md-4
@@ -46,7 +46,7 @@ block content
                               p #{game.Result}
                   div.col-md-3
                     .imagem        
-                      img(src="http://desporto_stats.imgs.sapo.pt/9/Teams/1680.png", width="125px")  
+                      img(src="/logos/" + team.nextGame.AwayTeam +".png", width="125px")  
                 div.row 
                   div.col-md-3
                     .equipa #{team.nextGame.HomeTeam}
