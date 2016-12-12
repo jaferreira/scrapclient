@@ -25,16 +25,10 @@ body {
   margin-right: auto;
 }
 .casa{
-  margin-left: 330px;
-  position: absolute;
-  z-index: 9999;
-  margin-top: -7px;
+  text-align: left;
 }
 .fora{
-  position: absolute;
-  z-index: 9999;
-  margin-top: -7px;
-  margin-left: 616px;
+  text-align: right;
 
 }
 .linha{
