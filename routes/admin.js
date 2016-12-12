@@ -60,7 +60,7 @@ router.get('/scrapTeam/:team', function (req, res, next) {
     var client = new Client();
     console.log(req.params.team);
     // direct way 
-    client.get("http://52.169.24.36/v1/scrap/team/" + req.params.team, function (data, response) {
+    client.get("http://40.69.39.216/v1/scrap/team/" + req.params.team, function (data, response) {
         
         var result = {'name' : data.HomeTeam, 'nextGame' : data};
 
@@ -84,7 +84,7 @@ router.get('/bulkLeague', function (req, res, next) {
     var client = new Client();
 
     // direct way 
-    client.get("http://52.169.24.36/v1/scrap/games/PT", function (data, response) {
+    client.get("http://40.69.39.216/v1/scrap/games/PT", function (data, response) {
         console.log(data);
         MongoClient.connect(url, function (err, db) {
             assert.equal(null, err);
