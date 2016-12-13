@@ -1,157 +1,279 @@
 extends layout
 
 block content
-    h1 #{teamInfo.name} vs #{teamInfo.nextGame.AwayTeam}
-    h2 #{teamInfo.nextGame.Competition.name}
-    
-    p teste #{graphBetween}
-    br
-    .chart02
-        canvas#myChart(width="150",height="100")
-    h3 Games Between Teams
-    div
-        table
-            thead
-                tr
-                    th Data
-                    th Competição
-                    th Equipa Casa
-                    th Resultado
-                    th Equipa Fora 
-            tbody
-                each g in teamInfo.nextGame.GamesBetweenTeams
-                    //- TOD: should be inline condition for the class
-                    if g.SameHomeTeam
-                        tr.sameHomeTeamClass
-                            td
-                                p #{g.Date}
-                            td
-                                p (#{g.Competicion} - #{g.Season})
-                            td
-                                p #{g.HomeTeam}
-                            td
-                                a(href='/match-info/' + g.GamePermLink) #{g.HomeScore} - #{g.AwayScore}               
-                            td
-                                p #{g.AwayTeam}
-                    else
-                        tr
-                            td
-                                p #{g.Date}
-                            td
-                                p (#{g.Competicion} - #{g.Season})
-                            td
-                                p #{g.HomeTeam}
-                            td
-                                a(href='/match-info/' + g.GamePermLink) #{g.HomeScore} - #{g.AwayScore}               
-                            td
-                                p #{g.AwayTeam}
-
-    hr
-
-    h3 Home Scores
-    div
-        table
-            thead
-                tr
-                    th Data
-                    th Competição
-                    th Equipa Casa
-                    th Resultado
-                    th Equipa Fora 
-            tbody
-                each g in teamInfo.nextGame.HomeScores
-                    //- TOD: should be inline condition for the class
-                    if g.SameHomeTeam
-                        tr.sameHomeTeamClass
-                            td
-                                p #{g.Date}
-                            td
-                                p (#{g.Competicion} - #{g.Season})
-                            td
-                                p #{g.HomeTeam}
-                            td
-                                a(href='/') #{g.HomeScore} - #{g.AwayScore}               
-                            td
-                                p #{g.AwayTeam}
-                    else
-                        tr
-                            td
-                                p #{g.Date}
-                            td
-                                p (#{g.Competicion} - #{g.Season})
-                            td
-                                p #{g.HomeTeam}
-                            td
-                                a(href='/') #{g.HomeScore} - #{g.AwayScore}               
-                            td
-                                    p #{g.AwayTeam}
-    hr
-
-    h3 Away Scores
-    div
-        table
-            thead
-                tr
-                    th Data
-                    th Competição
-                    th Equipa Casa
-                    th Resultado
-                    th Equipa Fora 
-            tbody
-                each g in teamInfo.nextGame.AwayScores
-                    //- TOD: should be inline condition for the class
-                    if g.SameHomeTeam
-                        tr.sameHomeTeamClass
-                            td
-                                p #{g.Date}
-                            td
-                                p (#{g.Competicion} - #{g.Season})
-                            td
-                                p #{g.HomeTeam}
-                            td
-                                a(href='/') #{g.HomeScore} - #{g.AwayScore}               
-                            td
-                                p #{g.AwayTeam}
-                    else
-                        tr
-                            td
-                                p #{g.Date}
-                            td
-                                p (#{g.Competicion} - #{g.Season})
-                            td
-                                p #{g.HomeTeam}
-                            td
-                                a(href='/') #{g.HomeScore} - #{g.AwayScore}               
-                            td
-                                p #{g.AwayTeam}
-    
-    script.
-        var ctx = document.getElementById("myChart");
-        var myChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ["#{teamInfo.name}", "Empate", "#{teamInfo.nextGame.AwayTeam}"],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [#{teamGraph.teste}],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)'
-                        
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
-                        
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true
+  .container
+        div.row
+          div.col-md-3
+            h2 #{teamInfo.nextGame.Competition.name}
+          div.col-md-9
+            h1 #{teamInfo.name} vs #{teamInfo.nextGame.AwayTeam}
+        div.row
+          div.col-md-4
+            hr.linha
+          div.col-md-4
+            .data #{teamInfo.nextGame.MatchDate} (#{teamInfo.nextGame.MatchHour})
+          div.col-md-4
+            hr.linha2
+        div.row 
+          div.col-md-12
+            .conf Confronto Directo – Últimos
+        div.row
+          div.col-md-3
+            .imagem
+                img(src="/logos/" + teamInfo.nextGame.HomeTeam +".png", width="125px")
+          div.col-md-6
+            div.row
+                div.col-md-4
+                    .dist
+                        each game,i in teamInfo.nextGame.GamesBetweenTeams
+                            if(i <= 4)                    
+                              if(game.SameHomeTeam)
+                                p Casa
+                              else
+                                p Fora 
+                div.col-md-4
+                div.col-md-4
+                    .res 
+                        each game,i in teamInfo.nextGame.GamesBetweenTeams
+                            if(i <= 4)                    
+                                p #{game.Result}
+          div.col-md-3
+            .imagem
+                img(src="/logos/" + teamInfo.nextGame.AwayTeam +".png", width="125px")
+        div.row
+          div.col-md-3
+            .equipa #{teamInfo.nextGame.HomeTeam}
+          div.col-md-6
+          div.col-md-3
+            .equipa #{teamInfo.nextGame.AwayTeam}
+        div.row
+          div.col-md-12 MENU
+        div.row
+          div.col-md-6.ultimos Ultimos 5
+          div.col-md-6.proximos Próximos 5
+        br
+        br
+        div.row.estilo1
+            each g,i in teamInfo.nextGame.HomeScores
                 
-            }
-            });
+                if(i<5)
+                  div.row.top
+                    div.col-md-6            
+                        div.row
+                            div.col-md-1.qua #{g.Date}
+                            div.col-md-4 #{g.Competicion} 
+                            div.col-md-5 
+                                div.row
+                                    div.col-md-6 #{g.HomeTeam}
+                                    div.col-md-6.res #{g.AwayTeam}
+                                hr
+                            div.col-md-2.res #{g.HomeScore} - #{g.AwayScore}
+                    div.col-md-6
+                            div.row
+                                div.col-md-1
+                                .qua.div.col-md-1  #{teamInfo.nextGame.AwayScores[i].Date}
+                                div.col-md-3 #{teamInfo.nextGame.AwayScores[i].Competicion}
+                                div.col-md-5
+                                    div.row
+                                        div.col-md-6 #{teamInfo.nextGame.AwayScores[i].HomeTeam}
+                                        div.col-md-6.res #{teamInfo.nextGame.AwayScores[i].AwayTeam}
+                                    hr
+                                div.col-md-2.res #{teamInfo.nextGame.AwayScores[i].HomeScore} - #{teamInfo.nextGame.AwayScores[i].AwayScore} 
+           
+        div.row.res
+            div.col-md-6 
+                a(href ="") ver mais +
+            div.col-md-6
+                a(href ="") ver mais +
+        div.row
+            div.col-md-6.ali
+                each g,i in teamInfo.nextGame.HomeScores
+                    if(i<5)
+                        if(g.HomeScore == g.AwayScore)
+                            .emp.todos E
+                        else if(g.SameHomeTeam)
+                            if(g.HomeScore > g.AwayScore)
+                                .win.todos V
+                            else
+                                .los.todos D
+                        else
+                            if(g.HomeScore > g.AwayScore)
+                                .los.todos D
+                            else
+                                .win.todos V
+            div.col-md-6.ali
+                each g,i in teamInfo.nextGame.AwayScores
+                    if(i<5)
+                        if(g.HomeScore == g.AwayScore)
+                            .emp.todos E
+                        else if(g.SameHomeTeam)
+                            if(g.HomeScore > g.AwayScore)
+                                .win.todos V
+                            else
+                                .los.todos D
+                        else
+                            if(g.HomeScore > g.AwayScore)
+                                .los.todos D
+                            else
+                                .win.todos V
+                       
+        div.row
+            col-md-12 Jogos em Casa
+    
+        div.row.estilo1
+            each g,i in teamInfo.nextGame.HomeScores
+                div.row.top
+                    div.col-md-6            
+                        div.row
+                            div.col-md-1 #{g.Date}
+
+        h3 Games Between Teams
+            div
+                table
+                    thead
+                        tr
+                            th Data
+                            th Competição
+                            th Equipa Casa
+                            th Resultado
+                            th Equipa Fora 
+                    tbody
+                        each g in teamInfo.nextGame.GamesBetweenTeams
+                            //- TOD: should be inline condition for the class
+                            if g.SameHomeTeam
+                                tr.sameHomeTeamClass
+                                    td
+                                        p #{g.Date}
+                                    td
+                                        p (#{g.Competicion} - #{g.Season})
+                                    td
+                                        p #{g.HomeTeam}
+                                    td
+                                        a(href='/match-info/' + g.GamePermLink) #{g.HomeScore} - #{g.AwayScore}               
+                                    td
+                                        p #{g.AwayTeam}
+                            else
+                                tr
+                                    td
+                                        p #{g.Date}
+                                    td
+                                        p (#{g.Competicion} - #{g.Season})
+                                    td
+                                        p #{g.HomeTeam}
+                                    td
+                                        a(href='/match-info/' + g.GamePermLink) #{g.HomeScore} - #{g.AwayScore}               
+                                    td
+                                        p #{g.AwayTeam}
+
+            hr
+
+            h3 Home Scores
+            div
+                table
+                    thead
+                        tr
+                            th Data
+                            th Competição
+                            th Equipa Casa
+                            th Resultado
+                            th Equipa Fora 
+                    tbody
+                        each g in teamInfo.nextGame.HomeScores
+                            //- TOD: should be inline condition for the class
+                            if g.SameHomeTeam
+                                tr.sameHomeTeamClass
+                                    td
+                                        p #{g.Date}
+                                    td
+                                        p (#{g.Competicion} - #{g.Season})
+                                    td
+                                        p #{g.HomeTeam}
+                                    td
+                                        a(href='/') #{g.HomeScore} - #{g.AwayScore}               
+                                    td
+                                        p #{g.AwayTeam}
+                            else
+                                tr
+                                    td
+                                        p #{g.Date}
+                                    td
+                                        p (#{g.Competicion} - #{g.Season})
+                                    td
+                                        p #{g.HomeTeam}
+                                    td
+                                        a(href='/') #{g.HomeScore} - #{g.AwayScore}               
+                                    td
+                                            p #{g.AwayTeam}
+            hr
+
+            h3 Away Scores
+            div
+                table
+                    thead
+                        tr
+                            th Data
+                            th Competição
+                            th Equipa Casa
+                            th Resultado
+                            th Equipa Fora 
+                    tbody
+                        each g in teamInfo.nextGame.AwayScores
+                            //- TOD: should be inline condition for the class
+                            if g.SameHomeTeam
+                                tr.sameHomeTeamClass
+                                    td
+                                        p #{g.Date}
+                                    td
+                                        p (#{g.Competicion} - #{g.Season})
+                                    td
+                                        p #{g.HomeTeam}
+                                    td
+                                        a(href='/') #{g.HomeScore} - #{g.AwayScore}               
+                                    td
+                                        p #{g.AwayTeam}
+                            else
+                                tr
+                                    td
+                                        p #{g.Date}
+                                    td
+                                        p (#{g.Competicion} - #{g.Season})
+                                    td
+                                        p #{g.HomeTeam}
+                                    td
+                                        a(href='/') #{g.HomeScore} - #{g.AwayScore}               
+                                    td
+                                        p #{g.AwayTeam}
+            p teste #{graphBetween}
+            .chart02
+                canvas#myChart(width="150",height="100")
+            
+            script.
+                var ctx = document.getElementById("myChart");
+                var myChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ["#{teamInfo.name}", "Empate", "#{teamInfo.nextGame.AwayTeam}"],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: [#{teamGraph.teste}],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)'
+                                
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)'
+                                
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true
+                        
+                    }
+                    });

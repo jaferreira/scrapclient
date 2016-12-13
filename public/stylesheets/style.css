@@ -9,6 +9,11 @@ body {
   margin-bottom: 40px;
 }
 
+.linhaa{
+  border-top: 3px solid yellowgreen;
+  border-left: solid yellowgreen;
+}
+
 
 .chart02 {
    float: right;
@@ -19,11 +24,6 @@ body {
   -webkit-perspective-origin: center;
 }
 
-#content{
-  width: 980px;
-  margin-left: auto;
-  margin-right: auto;
-}
 .casa{
   text-align: left;
 }
@@ -77,6 +77,46 @@ body {
 .separar{
   width: 980px;
 }
+
+.estilo1{
+  font-size: 10px;
+}
+.qua{
+  border-radius: 4px;
+  background: orange;
+  text-align: center;
+  color: white;
+}
+.ali{
+  display: inline-flex;
+  color: white;
+  text-align: center !important;
+  font-size: 14px;
+}
+.todos{
+  border-radius: 6px;
+  width: 33px;
+  height: 33px;
+  margin-right: 20px;
+  padding-top: 5px;
+}
+.win{
+  background-color: seagreen;
+}
+.los{
+  background-color: darkred;
+}
+.emp{
+  background-color: yellow;
+}
+.ee{
+  padding-left: 120px;
+  padding-top: 10px;
+}
+.top{
+  padding-top: 7px;
+}
+
 
 
 
