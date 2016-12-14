@@ -106,13 +106,13 @@ block content
                     if(i<5)
                         if(g.HomeScore == g.AwayScore)
                             .emp.todos E
-                        else if(g.SameHomeTeam)
-                            if(g.HomeScore > g.AwayScore)
+                        else if(g.SameAwayTeam)
+                            if(g.AwayScore > g.HomeScore)
                                 .win.todos V
                             else
                                 .los.todos D
                         else
-                            if(g.HomeScore > g.AwayScore)
+                            if(g.AwayScore > g.HomeScore)
                                 .los.todos D
                             else
                                 .win.todos V
