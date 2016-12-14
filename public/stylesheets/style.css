@@ -10,8 +10,8 @@ body {
 }
 
 .linhaa{
-  border-top: 3px solid yellowgreen;
-  border-left: solid yellowgreen;
+  border-left:  solid yellowgreen;
+  border-right: solid red;
 }
 
 
@@ -26,20 +26,25 @@ body {
 
 .casa{
   text-align: left;
+  margin-top: -12px;
 }
 .fora{
   text-align: right;
-
+  margin-top: -12px;
 }
 .linha{
-  margin-top: 9px;
+  margin-top: 0px;
   border-top: 3px solid yellowgreen;
 }
 .casa{
   text-align: left;
 }
+.sem{
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
 .linha2{
-  margin-top: 9px;
+  margin-top: 0px;
   border-top: 3px solid red;
 }
 .fora{
@@ -95,19 +100,20 @@ body {
 }
 .todos{
   border-radius: 6px;
-  width: 33px;
-  height: 33px;
+  font-size: 13px;
+  width: 30px;
+  height: 30px;
   margin-right: 20px;
   padding-top: 5px;
 }
 .win{
-  background-color: seagreen;
+  background-color: #A1BC31;
 }
 .los{
-  background-color: darkred;
+  background-color: #A01127;
 }
 .emp{
-  background-color: yellow;
+  background-color: #F0CF29;
 }
 .ee{
   padding-left: 120px;
@@ -116,9 +122,54 @@ body {
 .top{
   padding-top: 7px;
 }
+.nav-tabs li {
+    float: left;
+    margin-bottom: -1px;
+}
+.nav li {
+    position: relative;
+    display: block;
+}
+.nav-tabs li.active a, .nav-tabs li.active a:focus, .nav-tabs li.active a:hover {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;}
 
 
-
+.nav-tabs li a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    font-size: 14px;
+    border-radius: 4px 4px 0 0;
+}
+.nav li a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    color: grey;
+    }
+.ultimos{
+    background-color: #DBE5B1;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 15px;
+    float: right;
+    padding-top: 3px;
+}
+.proximos{
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    border: solid 1px  #DBE5B1;
+    border-radius: 3px;
+    font-size: 15px;
+    padding-top: 3px;
+}
 
 
 a {
@@ -127,6 +178,8 @@ a {
 li{
   list-style-type: none;
 }
+
+
 
 
 

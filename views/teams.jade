@@ -3,16 +3,20 @@ extends layout
 block content
   .container
         div.row
-          div.col-md-3
-            h2 #{teamInfo.nextGame.Competition.name}
-          div.col-md-9
-            h1 #{teamInfo.name} vs #{teamInfo.nextGame.AwayTeam}
-        div.row
           div.col-md-4
+            h4 #{teamInfo.nextGame.Competition.name}
+          div.col-md-4
+            h5(style="text-align:center") #{teamInfo.name} vs #{teamInfo.nextGame.AwayTeam}
+          div.col-md-4
+        br
+        br
+  .container.linhaa
+        div.row
+          div.col-md-4.sem
             hr.linha
           div.col-md-4
             .data #{teamInfo.nextGame.MatchDate} (#{teamInfo.nextGame.MatchHour})
-          div.col-md-4
+          div.col-md-4.sem
             hr.linha2
         div.row 
           div.col-md-12
@@ -27,10 +31,10 @@ block content
                     .dist
                         each game,i in teamInfo.nextGame.GamesBetweenTeams
                             if(i <= 4)                    
-                              if(game.SameHomeTeam)
-                                p Casa
-                              else
-                                p Fora 
+                                if(game.SameHomeTeam)
+                                    p Casa
+                                else
+                                    p Fora 
                 div.col-md-4
                 div.col-md-4
                     .res 
@@ -46,86 +50,122 @@ block content
           div.col-md-6
           div.col-md-3
             .equipa #{teamInfo.nextGame.AwayTeam}
+            br
+            br
+            br
         div.row
-          div.col-md-12 MENU
-        div.row
-          div.col-md-6.ultimos Ultimos 5
-          div.col-md-6.proximos Próximos 5
-        br
-        br
-        div.row.estilo1
-            each g,i in teamInfo.nextGame.HomeScores
-                
-                if(i<5)
-                  div.row.top
-                    div.col-md-6            
-                        div.row
-                            div.col-md-1.qua #{g.Date}
-                            div.col-md-4 #{g.Competicion} 
-                            div.col-md-5 
-                                div.row
-                                    div.col-md-6 #{g.HomeTeam}
-                                    div.col-md-6.res #{g.AwayTeam}
-                                hr
-                            div.col-md-2.res #{g.HomeScore} - #{g.AwayScore}
-                    div.col-md-6
-                            div.row
-                                div.col-md-1
-                                .qua.div.col-md-1  #{teamInfo.nextGame.AwayScores[i].Date}
-                                div.col-md-3 #{teamInfo.nextGame.AwayScores[i].Competicion}
-                                div.col-md-5
-                                    div.row
-                                        div.col-md-6 #{teamInfo.nextGame.AwayScores[i].HomeTeam}
-                                        div.col-md-6.res #{teamInfo.nextGame.AwayScores[i].AwayTeam}
-                                    hr
-                                div.col-md-2.res #{teamInfo.nextGame.AwayScores[i].HomeScore} - #{teamInfo.nextGame.AwayScores[i].AwayScore} 
-           
-        div.row.res
-            div.col-md-6 
-                a(href ="") ver mais +
-            div.col-md-6
-                a(href ="") ver mais +
-        div.row
-            div.col-md-6.ali
+            div.col-md-12(style="padding-left:45px")
+                ul.nav.nav-tabs
+                    li(role='presentation')
+                        a(href="#") Ficha de Jogo
+                    li.active(role='presentation')
+                        a(href="#") Estatísticas
+                    li(role='presentation')
+                        a(href="#") ODDS
+                    li(role='presentation')
+                        a(href="#") Classificações
+            br
+            br
+            br
+            div.row
+                div.col-md-1
+                div.col-md-5
+                    .ultimos Ultimos 5 Jogos
+                div.col-md-5
+                    div.row
+                        div.col-md-1
+                        div.col-md-10
+                            .proximos Próximos 5 Jogos
+                div.col-md-1
+                br
+                br
+                br
+            div.row.estilo1
                 each g,i in teamInfo.nextGame.HomeScores
+                    
                     if(i<5)
-                        if(g.HomeScore == g.AwayScore)
-                            .emp.todos E
-                        else if(g.SameHomeTeam)
-                            if(g.HomeScore > g.AwayScore)
-                                .win.todos V
-                            else
-                                .los.todos D
-                        else
-                            if(g.HomeScore > g.AwayScore)
-                                .los.todos D
-                            else
-                                .win.todos V
-            div.col-md-6.ali
-                each g,i in teamInfo.nextGame.AwayScores
-                    if(i<5)
-                        if(g.HomeScore == g.AwayScore)
-                            .emp.todos E
-                        else if(g.SameHomeTeam)
-                            if(g.HomeScore > g.AwayScore)
-                                .win.todos V
-                            else
-                                .los.todos D
-                        else
-                            if(g.HomeScore > g.AwayScore)
-                                .los.todos D
-                            else
-                                .win.todos V
-                       
-        div.row
-            col-md-12 Jogos em Casa
-    
-        div.row.estilo1
-            each g,i in teamInfo.nextGame.HomeScores
-                div.row.top
-                    div.col-md-6            
+                        div.row.top
+                            div.col-md-1
+                            div.col-md-5            
+                                div.row
+                                    div.col-md-1.qua #{g.Date}
+                                    div.col-md-4 #{g.Competicion} 
+                                    div.col-md-5 
+                                        div.row
+                                            div.col-md-6 #{g.HomeTeam}
+                                            div.col-md-6.res #{g.AwayTeam}
+                                        hr
+                                    div.col-md-2.res #{g.HomeScore} - #{g.AwayScore}
+                            div.col-md-5
+                                div.row
+                                    div.col-md-1
+                                    div.col-md-1.qua  #{teamInfo.nextGame.AwayScores[i].Date}
+                                    div.col-md-3 #{teamInfo.nextGame.AwayScores[i].Competicion}
+                                    div.col-md-5
+                                        div.row
+                                            div.col-md-6 #{teamInfo.nextGame.AwayScores[i].HomeTeam}
+                                            div.col-md-6.res #{teamInfo.nextGame.AwayScores[i].AwayTeam}
+                                        hr
+                                    div.col-md-2.res #{teamInfo.nextGame.AwayScores[i].HomeScore} - #{teamInfo.nextGame.AwayScores[i].AwayScore} 
+                            div.col-md-1
+                div.row.res
+                    div.col-md-6 
+                        a(href ="") ver mais +
+                    div.col-md-5
+                        a(href ="") ver mais +
+                    div.col-md-1
+                    br
+                    br
+                    br
+                div.row
+                    div.col-md-1
+                    div.col-md-5.ali
+                        each g,i in teamInfo.nextGame.HomeScores
+                            if(i<5)
+                                if(g.HomeScore == g.AwayScore)
+                                    .emp.todos E
+                                else if(g.SameHomeTeam)
+                                    if(g.HomeScore > g.AwayScore)
+                                        .win.todos V
+                                    else
+                                        .los.todos D
+                                else
+                                    if(g.HomeScore > g.AwayScore)
+                                        .los.todos D
+                                    else
+                                        .win.todos V
+                    div.col-md-5
                         div.row
-                            div.col-md-1 #{g.Date}
+                            div.col-md-1
+                            div.col-md-10.ali
+                                each g,i in teamInfo.nextGame.AwayScores
+                                    if(i<5)
+                                        if(g.HomeScore == g.AwayScore)
+                                            .emp.todos E
+                                        else if(g.SameHomeTeam)
+                                            if(g.HomeScore > g.AwayScore)
+                                                .win.todos V
+                                            else
+                                                .los.todos D
+                                        else
+                                            if(g.HomeScore > g.AwayScore)
+                                                .los.todos D
+                                            else
+                                                .win.todos V
+                    div.col-md-1
+                    br
+                    br
+                    br
+                    br
+                div.row
+                    div.col-md-1
+                    div.col-md-5 Jogos em Casa
+                    div.col-md-6 Jogos Fora
+                br
+                br
+                br
+                br
+                br
 
         h3 Games Between Teams
             div
