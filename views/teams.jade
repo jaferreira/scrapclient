@@ -135,6 +135,41 @@ block content
                                     else
                                         .win.todos V
                     div.col-md-5
+                        if(g.HomeScore == g.AwayScore)
+                            .emp.todos E
+                        else if(g.SameHomeTeam)
+                            if(g.HomeScore > g.AwayScore)
+                                .win.todos V
+                            else
+                                .los.todos D
+                        else
+                            if(g.HomeScore > g.AwayScore)
+                                .los.todos D
+                            else
+                                .win.todos V
+            div.col-md-6.ali
+                each g,i in teamInfo.nextGame.AwayScores
+                    if(i<5)
+                        if(g.HomeScore == g.AwayScore)
+                            .emp.todos E
+                        else if(g.SameAwayTeam)
+                            if(g.AwayScore > g.HomeScore)
+                                .win.todos V
+                            else
+                                .los.todos D
+                        else
+                            if(g.AwayScore > g.HomeScore)
+                                .los.todos D
+                            else
+                                .win.todos V
+                       
+        div.row
+            col-md-12 Jogos em Casa
+    
+        div.row.estilo1
+            each g,i in teamInfo.nextGame.HomeScores
+                div.row.top
+                    div.col-md-6            
                         div.row
                             div.col-md-1
                             div.col-md-10.ali
